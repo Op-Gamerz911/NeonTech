@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+.hero-tagline {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(
+    to right,
+    #ff4d4d,
+    #ff8c00,
+    #ffd700
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 8px rgba(255, 77, 77, 0.3);
+  letter-spacing: 0.05em;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(255, 77, 77, 0.6));
+  }
+  to {
+    filter: drop-shadow(0 0 6px rgba(255, 140, 0, 0.8));
+  }
+}

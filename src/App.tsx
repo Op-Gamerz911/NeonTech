@@ -1,26 +1,12 @@
 import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Monitor, Cpu, Box, Droplets, PaintBucket, Zap, Shield, Clock, Trophy } from 'lucide-react';
+import BuildHelp from './pages/BuildHelp';
+import GpuComparison from './pages/GpuComparison';
 
-function App() {
+function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-cyan-900">
-      {/* Navigation Bar */}
-      <nav className="bg-black/60 backdrop-blur-sm fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center">
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-['Segoe UI']" style={{ textShadow: '2px 2px 4px rgba(0, 255, 255, 0.2)' }}>
-              NeonTech
-            </h1>
-            <div className="ml-8 space-x-6">
-              <a href="#" className="text-cyan-200 hover:text-white transition-colors">Home</a>
-              <a href="#" className="text-cyan-200 hover:text-white transition-colors">Shop</a>
-              <a href="#" className="text-cyan-200 hover:text-white transition-colors">Build Help</a>
-            </div>
-          </div>
-          <a href="#" className="text-cyan-200 hover:text-white transition-colors">FAQs/Warranty</a>
-        </div>
-      </nav>
-
+    <>
       {/* Hero Section with Cards */}
       <section className="pt-32 px-4">
         <div className="max-w-7xl mx-auto">
@@ -76,7 +62,7 @@ function App() {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:transform hover:-translate-y-2 transition-all">
               <Cpu className="w-12 h-12 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3">Custom Part Picking</h3>
-              <p className="text-cyan-100 mb-4">Build your PC exactly how you want it, with our extensive selection of premium components.</p>
+              <p className="text-cyan-200 mb-4">Build your PC exactly how you want it, with our extensive selection of premium components.</p>
               <ul className="text-cyan-200 space-y-2 ml-4 list-disc">
                 <li>Latest GPUs and CPUs</li>
                 <li>Premium motherboards</li>
@@ -89,7 +75,7 @@ function App() {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:transform hover:-translate-y-2 transition-all">
               <Box className="w-12 h-12 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3">Pre-built Systems</h3>
-              <p className="text-cyan-100 mb-4">Ready-to-go gaming rigs optimized for performance and value.</p>
+              <p className="text-cyan-200 mb-4">Ready-to-go gaming rigs optimized for performance and value.</p>
               <ul className="text-cyan-200 space-y-2 ml-4 list-disc">
                 <li>Entry-level gaming</li>
                 <li>Mid-range powerhouse</li>
@@ -102,7 +88,7 @@ function App() {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:transform hover:-translate-y-2 transition-all">
               <PaintBucket className="w-12 h-12 text-blue-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3">Custom Design</h3>
-              <p className="text-cyan-100 mb-4">Upload your artwork to customize your PC case and GPU backplate.</p>
+              <p className="text-cyan-200 mb-4">Upload your artwork to customize your PC case and GPU backplate.</p>
               <ul className="text-cyan-200 space-y-2 ml-4 list-disc">
                 <li>Custom vinyl wraps</li>
                 <li>RGB coordination</li>
@@ -115,7 +101,7 @@ function App() {
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 hover:transform hover:-translate-y-2 transition-all">
               <Droplets className="w-12 h-12 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-3">Watercooled Builds</h3>
-              <p className="text-cyan-100 mb-4">Premium custom loop cooling solutions for maximum performance.</p>
+              <p className="text-cyan-200 mb-4">Premium custom loop cooling solutions for maximum performance.</p>
               <ul className="text-cyan-200 space-y-2 ml-4 list-disc">
                 <li>Hard-line tubing</li>
                 <li>Custom reservoirs</li>
@@ -202,17 +188,35 @@ function App() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">Ready to Build Your Dream PC?</h2>
-          <p className="text-xl text-white/90 mb-8">Join thousands of satisfied customers who have brought their PC dreams to life.</p>
-          <button className="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-cyan-100 transition-all">
-            Start Your Build
-          </button>
+function Layout() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-cyan-900">
+      {/* Navigation Bar */}
+      <nav className="bg-black/60 backdrop-blur-sm fixed w-full z-50">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <Link to="/" className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-['Segoe UI']" style={{ textShadow: '2px 2px 4px rgba(0, 255, 255, 0.2)' }}>
+              NeonTech
+            </Link>
+            <div className="ml-8 space-x-6">
+              <Link to="/" className="text-cyan-200 hover:text-white transition-colors">Home</Link>
+              <Link to="/shop" className="text-cyan-200 hover:text-white transition-colors">Shop</Link>
+              <Link to="/build-help" className="text-cyan-200 hover:text-white transition-colors">Build Help</Link>
+            </div>
+          </div>
+          <Link to="/faq" className="text-cyan-200 hover:text-white transition-colors">FAQs/Warranty</Link>
         </div>
-      </section>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/build-help" element={<BuildHelp />} />
+        <Route path="/gpu-comparison" element={<GpuComparison />} />
+      </Routes>
 
       {/* Footer */}
       <footer className="bg-black/60 backdrop-blur-sm py-12 px-4">
@@ -220,36 +224,36 @@ function App() {
           <div>
             <h3 className="text-white font-bold mb-4">About Us</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Our Story</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Team</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Careers</a></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Our Story</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Team</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Careers</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-white font-bold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Custom Builds</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Pre-built PCs</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Watercooling</a></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Custom Builds</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Pre-built PCs</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Watercooling</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-white font-bold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">FAQs</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Terms & Conditions</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Return Policy</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Warranty Policy</a></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">FAQs</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Terms & Conditions</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Return Policy</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Warranty Policy</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="text-white font-bold mb-4">Connect</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Twitter</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="#" className="text-cyan-200 hover:text-white transition-colors">Discord</a></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Twitter</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Instagram</Link></li>
+              <li><Link to="#" className="text-cyan-200 hover:text-white transition-colors">Discord</Link></li>
             </ul>
           </div>
         </div>
@@ -260,6 +264,10 @@ function App() {
       </footer>
     </div>
   );
+}
+
+function App() {
+  return <Layout />;
 }
 
 export default App;

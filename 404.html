@@ -1,1 +1,19 @@
-<!DOCTYPE html><html><head><title>Loading...</title></head><body><p>Loading app...</p><script>sessionStorage.redirect = location.pathname; location.replace(document.referrer || "/");</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+    <p>Loading app...</p>
+    <script>
+        // Simple script to redirect back to root if no sessionStorage.redirect
+        if (sessionStorage.redirect) {
+            const redirectUrl = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            location.replace(redirectUrl);
+        } else {
+            location.replace("/");
+        }
+    </script>
+</body>
+</html>
